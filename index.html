@@ -1,123 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nocturnal Dog 2025 Booklet</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nocturnal Dog 2025 Booklet</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header class="header">
-        <button id="menu-toggle" class="menu-toggle">☰</button>
-        <h1>Nocturnal Dog 2025 Booklet</h1>
-        <p class="subtitle">Celebrating 10 years of the Nocturnal Dog film workshop</p>
-        <a href="https://www.facebook.com/events/1089419692710203" target="_blank" class="event-link">View Facebook Event</a>
-    </header>
-    <div class="container">
-        <nav id="sidebar" class="sidebar">
-            <h2>Table of Contents</h2>
-            <ul id="toc-list"></ul>
-        </nav>
-        <main class="main-content">
-            <div class="page-viewer">
-                <img id="page-image" src="images/page1.webp" alt="Page 1">
-            </div>
-            <div class="nav-buttons">
-                <button id="prev-btn" class="nav-btn">&lt; Prev</button>
-                <span id="page-indicator">1 / 21</span>
-                <button id="next-btn" class="nav-btn">Next &gt;</button>
-            </div>
+  <header class="header">
+    <button id="menu-toggle" class="menu-toggle" aria-label="Open menu">☰</button>
+    <h1>Nocturnal Dog 2025 Booklet</h1>
+    <p class="subtitle">Celebrating 10 years of the Nocturnal Dog film workshop</p>
+    <a href="https://www.facebook.com/events/1089419692710203" target="_blank" rel="noopener" class="event-link">View Facebook Event</a>
+  </header>
 
-            <!-- Progress bar showing current reading progress -->
-            <div class="progress-container">
-                <div id="progress-bar" class="progress-bar"></div>
-            </div>
-        </main>
-    </div>
-    <footer class="footer">
-        <p>&copy; 2025 Nocturnal Dog. All rights reserved.</p>
-    </footer>
-    <script>
-const tocEntries = [{"title": "1. BLOKK – IDENT (10:10-11:25)", "page": 8}, {"title": "Praedo (2021) 0,5 perc – reklám", "page": 8}, {"title": "How to Make a Remake (2018) 14 perc – Werkfilm", "page": 8}, {"title": "1435MM (2016) 20 perc – rövidfilm", "page": 9}, {"title": "Kiterítenek úgy is… (2024) 5 perc – Etűd", "page": 9}, {"title": "Morzsi (2016) 2,5 perc – Műhelyfilm", "page": 10}, {"title": "A hős útja… (2019) 1 perc – Trailer", "page": 10}, {"title": "Jó ok a távozásra (2019) 13 perc – Rövidfilm", "page": 11}, {"title": "Akherón …és mi lett a pandával? (2021) 10 perc – Kísérleti film", "page": 11}, {"title": "A varázsló halála (2016) 2 perc – Dráma", "page": 12}, {"title": "Panelbeszélgetés I. (11:25-11:40)", "page": 12}, {"title": "Szünet (11:40-11:55)", "page": 12}, {"title": "2. BLOKK – FORDULATOK (11:55-13:15)", "page": 13}, {"title": "Asomik (2021) 1 perc – Reklám", "page": 13}, {"title": "Phish (2016) 7,5 perc – Misztikus", "page": 13}, {"title": "Ki ez a sok művész? (2023) 25 perc – Rövidfilm", "page": 14}, {"title": "Aratás (2022) 30 perc – Rövidfilm", "page": 14}, {"title": "The Minimum Clearance Outline (2017) 8 perc – Road Movie", "page": 15}, {"title": "Kezdetben volt a tett (2016) 3,5 perc – Etűd", "page": 15}, {"title": "Panelbeszélgetés II. (13:15-13:35)", "page": 15}, {"title": "Ebédszünet (13:35-14:20)", "page": 15}, {"title": "3. BLOKK – PROJEKTEK (14:20-15:25)", "page": 16}, {"title": "Silence in Bjordall (2021) 1 perc – Trailer", "page": 16}, {"title": "Három fehér ló (2018) 4 perc – Rövidfilm", "page": 16}, {"title": "Kenopsia, Opia, Lachesism (2018) 6 perc – Etűd", "page": 17}, {"title": "Mr A, Mr K, a Pápa, Izom Tibor és az elnyomottak (2018) 5 perc – Kísérleti film", "page": 17}, {"title": "4 szoba (2025) 10 perc – Kísérleti film", "page": 17}, {"title": "Da Capo (2018) 5 perc – Etűd", "page": 18}, {"title": "Hétköznapi szuperhősök (és hogy miért utáljuk őket) (2020) 30 perc – Áldokumentumfilm", "page": 18}, {"title": "Panelbeszélgetés III. (15:25-15:45)", "page": 18}, {"title": "Szünet (15:45-16:00)", "page": 18}, {"title": "4. BLOKK – SÖTÉT OLDAL (16:00-17:10)", "page": 19}, {"title": "Greetings from Bjordall (2021) 1 perc - Trailer", "page": 19}];
-const totalPages = 21;
-let currentPage = 1;
+  <div class="container">
+    <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+      <h2>Table of Contents</h2>
+      <ul id="toc-list"></ul>
+    </nav>
 
-function renderToc() {
-    const tocList = document.getElementById('toc-list');
-    tocEntries.forEach(entry => {
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-        a.href = '#';
-        a.textContent = entry.title;
-        a.dataset.page = entry.page;
-        a.onclick = function(event) {
-            event.preventDefault();
-            goToPage(parseInt(this.dataset.page));
-            closeSidebar();
-        };
-        li.appendChild(a);
-        tocList.appendChild(li);
+    <main class="main-content">
+      <div class="page-viewer" id="page-viewer">
+        <img id="page-image" src="images/page1.webp" alt="Page 1" loading="eager" />
+      </div>
+
+      <!-- Fixed bottom navigation bar -->
+      <div class="nav-bar" id="nav-bar" role="group" aria-label="Page navigation" tabindex="-1">
+        <button id="prev-btn" class="nav-btn" aria-label="Previous page">‹ Prev</button>
+        <div class="nav-center">
+          <span id="page-indicator">1 / 21</span>
+          <div class="progress-container"><div class="progress-bar" id="progress-bar"></div></div>
+        </div>
+        <button id="next-btn" class="nav-btn" aria-label="Next page">Next ›</button>
+      </div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 Nocturnal Dog. All rights reserved.</p>
+  </footer>
+
+  <script>
+  // ------- DATA (leave as-is; add/remove only if your booklet changes) -------
+  const tocEntries = [{"title":"1. BLOKK – IDENT (10:10-11:25)","page":8},{"title":"Praedo (2021) 0,5 perc – reklám","page":8},{"title":"How to Make a Remake (2018) 14 perc – Werkfilm","page":8},{"title":"1435MM (2016) 20 perc – rövidfilm","page":9},{"title":"Kiterítenek úgy is… (2024) 5 perc – Etűd","page":9},{"title":"Morzsi (2016) 2,5 perc – Műhelyfilm","page":10},{"title":"A hős útja… (2019) 1 perc – Trailer","page":10},{"title":"Jó ok a távozásra (2019) 13 perc – Rövidfilm","page":11},{"title":"Akherón …és mi lett a pandával? (2021) 10 perc – Kísérleti film","page":11},{"title":"A varázsló halála (2016) 2 perc – Dráma","page":12},{"title":"Panelbeszélgetés I. (11:25-11:40)","page":12},{"title":"Szünet (11:40-11:55)","page":12},{"title":"2. BLOKK – FORDULATOK (11:55-13:15)","page":13},{"title":"Asomik (2021) 1 perc – Reklám","page":13},{"title":"Phish (2016) 7,5 perc – Misztikus","page":13},{"title":"Ki ez a sok művész? (2023) 25 perc – Rövidfilm","page":14},{"title":"Aratás (2022) 30 perc – Rövidfilm","page":14},{"title":"The Minimum Clearance Outline (2017) 8 perc – Road Movie","page":15},{"title":"Kezdetben volt a tett (2016) 3,5 perc – Etűd","page":15},{"title":"Panelbeszélgetés II. (13:15-13:35)","page":15},{"title":"Ebédszünet (13:35-14:20)","page":15},{"title":"3. BLOKK – PROJEKTEK (14:20-15:25)","page":16},{"title":"Silence in Bjordall (2021) 1 perc – Trailer","page":16},{"title":"Három fehér ló (2018) 4 perc – Rövidfilm","page":16},{"title":"Kenopsia, Opia, Lachesism (2018) 6 perc – Etűd","page":17},{"title":"Mr A, Mr K, a Pápa, Izom Tibor és az elnyomottak (2018) 5 perc – Kísérleti film","page":17},{"title":"4 szoba (2025) 10 perc – Kísérleti film","page":17},{"title":"Da Capo (2018) 5 perc – Etűd","page":18},{"title":"Hétköznapi szuperhősök (és hogy miért utáljuk őket) (2020) 30 perc – Áldokumentumfilm","page":18},{"title":"Panelbeszélgetés III. (15:25-15:45)","page":18},{"title":"Szünet (15:45-16:00)","page":18},{"title":"4. BLOKK – SÖTÉT OLDAL (16:00-17:10)","page":19},{"title":"Greetings from Bjordall (2021) 1 perc - Trailer","page":19}];
+  const totalPages = 21;
+  let currentPage = 1;
+
+  const $ = id => document.getElementById(id);
+
+  function renderToc(){
+    const ul = $('toc-list');
+    tocEntries.forEach(e=>{
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = '#';
+      a.textContent = e.title;
+      a.dataset.page = e.page;
+      a.addEventListener('click', ev => { ev.preventDefault(); goToPage(+a.dataset.page); closeSidebar(); });
+      li.appendChild(a); ul.appendChild(li);
     });
-}
-function updatePage() {
-    const img = document.getElementById('page-image');
+  }
+  function highlightActiveToc(){
+    document.querySelectorAll('#toc-list a').forEach(a=>{
+      a.classList.toggle('active', +a.dataset.page === currentPage);
+    });
+  }
+  function updateProgress(){
+    const pct = (currentPage-1)/(totalPages-1);
+    $('progress-bar').style.width = `${Math.max(0, Math.min(1, pct))*100}%`;
+  }
+  function updatePage(){
+    const img = $('page-image');
     img.src = `images/page${currentPage}.webp`;
     img.alt = `Page ${currentPage}`;
-    document.getElementById('page-indicator').textContent = `${currentPage} / ${totalPages}`;
+    $('page-indicator').textContent = `${currentPage} / ${totalPages}`;
     highlightActiveToc();
     updateProgress();
-}
+    $('nav-bar').focus({preventScroll:true});
+  }
+  function goToPage(p){ if(p>=1 && p<=totalPages){ currentPage = p; updatePage(); } }
+  function nextPage(){ if(currentPage < totalPages){ currentPage++; updatePage(); } }
+  function prevPage(){ if(currentPage > 1){ currentPage--; updatePage(); } }
 
-function updateProgress() {
-    const progressBar = document.getElementById('progress-bar');
-    const percentage = (currentPage / totalPages) * 100;
-    progressBar.style.width = percentage + '%';
-}
+  function toggleSidebar(){ $('sidebar').classList.toggle('open'); }
+  function closeSidebar(){ $('sidebar').classList.remove('open'); }
 
-function highlightActiveToc() {
-    const tocList = document.getElementById('toc-list');
-    const links = tocList.querySelectorAll('a');
-    links.forEach(link => {
-        if (parseInt(link.dataset.page) === currentPage) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
+  // Gestures + tap-zones
+  (function addGestures(){
+    const area = $('page-viewer');
+    let sx=0, sy=0, st=0;
+    area.addEventListener('touchstart', e=>{
+      const t = e.changedTouches[0];
+      sx = t.clientX; sy = t.clientY; st = performance.now();
+    }, {passive:true});
+    area.addEventListener('touchend', e=>{
+      const t = e.changedTouches[0];
+      const dx = t.clientX - sx, dy = t.clientY - sy, dt = performance.now() - st;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) && dt < 600) {
+        if (dx < 0) nextPage(); else prevPage();
+      }
+    }, {passive:true});
+    area.addEventListener('click', e=>{
+      const x = e.offsetX / area.clientWidth;
+      if (x > 0.66) nextPage();
+      else if (x < 0.34) prevPage();
     });
-}
-function goToPage(page) {
-    if (page < 1 || page > totalPages) return;
-    currentPage = page;
-    updatePage();
-}
-function nextPage() {
-    if (currentPage < totalPages) {
-        currentPage++;
-        updatePage();
-    }
-}
-function prevPage() {
-    if (currentPage > 1) {
-        currentPage--;
-        updatePage();
-    }
-}
-function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('open');
-}
-function closeSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.remove('open');
-}
-document.getElementById('menu-toggle').addEventListener('click', toggleSidebar);
-document.getElementById('next-btn').addEventListener('click', nextPage);
-document.getElementById('prev-btn').addEventListener('click', prevPage);
-document.addEventListener('DOMContentLoaded', function() {
-    renderToc();
-    updatePage();
-});
+  })();
 
-    </script>
+  // Keyboard fallback
+  document.addEventListener('keydown', e=>{
+    if (e.key === 'ArrowRight') nextPage();
+    if (e.key === 'ArrowLeft')  prevPage();
+  });
+
+  // Android dynamic viewport fix
+  function setViewportHeights(){
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+  window.addEventListener('resize', setViewportHeights);
+  setViewportHeights();
+
+  // Wire up buttons + menu
+  $('menu-toggle').addEventListener('click', toggleSidebar);
+  $('next-btn').addEventListener('click', nextPage);
+  $('prev-btn').addEventListener('click', prevPage);
+
+  document.addEventListener('DOMContentLoaded', ()=>{ renderToc(); updatePage(); });
+  </script>
 </body>
 </html>
