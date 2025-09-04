@@ -27,6 +27,11 @@
                 <span id="page-indicator">1 / 21</span>
                 <button id="next-btn" class="nav-btn">Next &gt;</button>
             </div>
+
+            <!-- Progress bar showing current reading progress -->
+            <div class="progress-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
         </main>
     </div>
     <footer class="footer">
@@ -60,6 +65,13 @@ function updatePage() {
     img.alt = `Page ${currentPage}`;
     document.getElementById('page-indicator').textContent = `${currentPage} / ${totalPages}`;
     highlightActiveToc();
+    updateProgress();
+}
+
+function updateProgress() {
+    const progressBar = document.getElementById('progress-bar');
+    const percentage = (currentPage / totalPages) * 100;
+    progressBar.style.width = percentage + '%';
 }
 
 function highlightActiveToc() {

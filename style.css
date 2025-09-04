@@ -5,19 +5,20 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: #0e1726;
+    color: #e5e8f0;
     height: 100vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 .header {
-    background-color: #111;
+    background-color: #1a2238;
     color: #fff;
-    padding: 1rem;
+    padding: 1.5rem 1rem 1rem;
     text-align: center;
     position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 .menu-toggle {
     position: absolute;
@@ -31,24 +32,26 @@ body {
 }
 .header h1 {
     margin: 0.5rem 0;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 .header .subtitle {
     font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.85;
 }
 .header .event-link {
     display: inline-block;
-    padding: 0.4rem 0.8rem;
-    background-color: #fff;
-    color: #111;
+    padding: 0.4rem 0.9rem;
+    background-color: #374d87;
+    color: #e5e8f0;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 20px;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 .header .event-link:hover {
-    background-color: #e2e2e2;
+    background-color: #4d64aa;
+    color: #fff;
 }
 .container {
     flex: 1;
@@ -58,8 +61,9 @@ body {
 /* Sidebar styles */
 .sidebar {
     width: 250px;
-    background-color: #fff;
-    border-right: 1px solid #ddd;
+    background-color: #1f2d46;
+    color: #c3cfe0;
+    border-right: 1px solid #2e3f63;
     overflow-y: auto;
     position: absolute;
     left: -250px;
@@ -75,6 +79,7 @@ body {
 .sidebar h2 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    color: #e5e8f0;
 }
 .sidebar ul {
     list-style: none;
@@ -84,7 +89,7 @@ body {
     margin-bottom: 0.5rem;
 }
 .sidebar li a {
-    color: #111;
+    color: #c3cfe0;
     text-decoration: none;
     font-size: 0.9rem;
 }
@@ -95,14 +100,15 @@ body {
 }
 .sidebar li a:hover {
     text-decoration: underline;
+    color: #fff;
 }
 
 /* Highlight the active TOC entry */
 .sidebar li a.active {
     font-weight: bold;
     color: #fff;
-    background-color: #333;
-    padding: 0.1rem 0.2rem;
+    background-color: #374d87;
+    padding: 0.2rem 0.3rem;
     border-radius: 4px;
 }
 
@@ -127,40 +133,66 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background-color: #0e1726;
+    border-radius: 8px;
+    border: 1px solid #374d87;
+    padding: 0.5rem;
 }
 .page-viewer img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    background-color: #fff;
-    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    background-color: #fafafa;
+    border: 1px solid #374d87;
 }
 .nav-buttons {
     margin-top: 1rem;
     display: flex;
     align-items: center;
     gap: 1rem;
+    background-color: #1f2d46;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 .nav-btn {
     padding: 0.5rem 1rem;
     font-size: 1rem;
-    background-color: #111;
-    color: #fff;
+    background-color: #374d87;
+    color: #e5e8f0;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .nav-btn:hover {
-    background-color: #333;
+    background-color: #4d64aa;
+    transform: translateY(-2px);
 }
 #page-indicator {
     font-size: 1rem;
+    color: #c3cfe0;
+}
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background-color: #2e3f63;
+    border-radius: 3px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #4d64aa, #6188e0);
+    border-radius: 3px;
+    transition: width 0.3s ease;
 }
 .footer {
-    background-color: #111;
-    color: #fff;
+    background-color: #1a2238;
+    color: #8a93b9;
     text-align: center;
     padding: 1rem;
     font-size: 0.9rem;
@@ -183,5 +215,66 @@ body {
     }
     .menu-toggle {
         display: none;
+    }
+}
+
+/* Mobile portrait optimizations */
+@media (max-width: 600px) {
+    /* Reduce header padding and font sizes for small screens */
+    .header {
+        padding: 1rem 0.5rem;
+    }
+    .header h1 {
+        font-size: 1.3rem;
+    }
+    .header .subtitle {
+        font-size: 0.8rem;
+    }
+    .header .event-link {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+    }
+    /* Use full width layout with sidebar overlay */
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    .sidebar {
+        width: 80%;
+        max-width: 300px;
+        position: absolute;
+        left: -80%;
+        top: 0;
+        bottom: 0;
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+    .sidebar.open {
+        left: 0;
+    }
+    /* Adjust nav buttons to stack vertically */
+    .nav-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        align-items: stretch;
+    }
+    .nav-buttons .nav-btn {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
+    #page-indicator {
+        width: 100%;
+        text-align: center;
+    }
+    /* Ensure page viewer fits within viewport */
+    .page-viewer {
+        flex: 1;
+        height: calc(100vh - 260px);
+        margin-top: 1rem;
+    }
+    .page-viewer img {
+        max-height: 100%;
     }
 }
