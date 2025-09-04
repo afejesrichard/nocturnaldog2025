@@ -51,6 +51,11 @@ body{
   -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
 }
 .sidebar.open{ left:0; }
+.sidebar::after{ /* subtle bottom fade to hint more content */ 
+  content:""; position:sticky; bottom:0; left:0; right:0; height:28px;
+  background: linear-gradient(to bottom, rgba(15,26,50,0), rgba(15,26,50,1));
+  pointer-events:none;
+}
 .sidebar h2{ margin:1rem; font-size:1rem; color:#d5def0; }
 .sidebar ul{ list-style:none; padding:0 1rem 1rem; margin:0; }
 .sidebar li{ margin:.25rem 0; }
@@ -79,7 +84,7 @@ body{
 }
 .page-viewer img{
   max-width:100%;
-  max-height: calc(var(--vh) * 100 - 14rem);
+  max-height: calc(var(--vh) * 100 - 16rem); /* a bit more room for jump control */
   object-fit:contain;
   background:#0b1220; border:1px solid #1f2d46; border-radius:8px;
   box-shadow:0 4px 10px rgba(0,0,0,.45);
@@ -111,6 +116,12 @@ body{
 }
 .progress-bar{ height:100%; width:0%; background:linear-gradient(90deg,#4d64aa,#6b8cff); }
 
+.jump-label{ font-size:.75rem; color:#9fb0cc; }
+.jump-select{
+  background:#1a2746; color:#e5e8f0; border:1px solid #304b7c; border-radius:8px;
+  padding:.35rem .5rem; font-size:.95rem;
+}
+
 /* ---------- Footer ---------- */
 .footer{
   background:#0e1726; color:#9fb0cc;
@@ -129,6 +140,6 @@ body{
   .header .event-link{ font-size:.85rem; padding:.45rem .8rem; }
   .container{ flex-direction:column; height:auto; }
   .sidebar{ width:85%; max-width:320px; left:-85%; top:0; bottom:0; box-shadow: 6px 0 12px rgba(0,0,0,.35); }
-  .page-viewer{ margin:.5rem .5rem 4.5rem; }
+  .page-viewer{ margin:.5rem .5rem 4.8rem; }
   .nav-btn{ font-size:1rem; padding:.8rem 1rem; }
 }
