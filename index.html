@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nocturnal Dog 2025 Booklet</title>
   <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#1a2238">
 </head>
 <body>
   <header class="header">
@@ -25,7 +26,6 @@
         <img id="page-image" src="images/page1.webp" alt="Page 1" loading="eager" />
       </div>
 
-      <!-- Fixed bottom navigation bar -->
       <div class="nav-bar" id="nav-bar" role="group" aria-label="Page navigation" tabindex="-1">
         <button id="prev-btn" class="nav-btn" aria-label="Previous page">‹ Prev</button>
         <div class="nav-center">
@@ -42,11 +42,9 @@
   </footer>
 
   <script>
-  // ------- DATA (leave as-is; add/remove only if your booklet changes) -------
-  const tocEntries = [{"title":"1. BLOKK – IDENT (10:10-11:25)","page":8},{"title":"Praedo (2021) 0,5 perc – reklám","page":8},{"title":"How to Make a Remake (2018) 14 perc – Werkfilm","page":8},{"title":"1435MM (2016) 20 perc – rövidfilm","page":9},{"title":"Kiterítenek úgy is… (2024) 5 perc – Etűd","page":9},{"title":"Morzsi (2016) 2,5 perc – Műhelyfilm","page":10},{"title":"A hős útja… (2019) 1 perc – Trailer","page":10},{"title":"Jó ok a távozásra (2019) 13 perc – Rövidfilm","page":11},{"title":"Akherón …és mi lett a pandával? (2021) 10 perc – Kísérleti film","page":11},{"title":"A varázsló halála (2016) 2 perc – Dráma","page":12},{"title":"Panelbeszélgetés I. (11:25-11:40)","page":12},{"title":"Szünet (11:40-11:55)","page":12},{"title":"2. BLOKK – FORDULATOK (11:55-13:15)","page":13},{"title":"Asomik (2021) 1 perc – Reklám","page":13},{"title":"Phish (2016) 7,5 perc – Misztikus","page":13},{"title":"Ki ez a sok művész? (2023) 25 perc – Rövidfilm","page":14},{"title":"Aratás (2022) 30 perc – Rövidfilm","page":14},{"title":"The Minimum Clearance Outline (2017) 8 perc – Road Movie","page":15},{"title":"Kezdetben volt a tett (2016) 3,5 perc – Etűd","page":15},{"title":"Panelbeszélgetés II. (13:15-13:35)","page":15},{"title":"Ebédszünet (13:35-14:20)","page":15},{"title":"3. BLOKK – PROJEKTEK (14:20-15:25)","page":16},{"title":"Silence in Bjordall (2021) 1 perc – Trailer","page":16},{"title":"Három fehér ló (2018) 4 perc – Rövidfilm","page":16},{"title":"Kenopsia, Opia, Lachesism (2018) 6 perc – Etűd","page":17},{"title":"Mr A, Mr K, a Pápa, Izom Tibor és az elnyomottak (2018) 5 perc – Kísérleti film","page":17},{"title":"4 szoba (2025) 10 perc – Kísérleti film","page":17},{"title":"Da Capo (2018) 5 perc – Etűd","page":18},{"title":"Hétköznapi szuperhősök (és hogy miért utáljuk őket) (2020) 30 perc – Áldokumentumfilm","page":18},{"title":"Panelbeszélgetés III. (15:25-15:45)","page":18},{"title":"Szünet (15:45-16:00)","page":18},{"title":"4. BLOKK – SÖTÉT OLDAL (16:00-17:10)","page":19},{"title":"Greetings from Bjordall (2021) 1 perc - Trailer","page":19}];
+  const tocEntries = [{"title": "1. BLOKK – IDENT (10:10-11:25)", "page": 8}, {"title": "Praedo (2021) 0,5 perc – reklám", "page": 8}, {"title": "How to Make a Remake (2018) 14 perc – Werkfilm", "page": 8}, {"title": "1435MM (2016) 20 perc – rövidfilm", "page": 9}, {"title": "Kiterítenek úgy is… (2024) 5 perc – Etűd", "page": 9}, {"title": "Morzsi (2016) 2,5 perc – Műhelyfilm", "page": 10}, {"title": "A hős útja… (2019) 1 perc – Trailer", "page": 10}, {"title": "Jó ok a távozásra (2019) 13 perc – Rövidfilm", "page": 11}, {"title": "Akherón …és mi lett a pandával? (2021) 10 perc – Kísérleti film", "page": 11}, {"title": "A varázsló halála (2016) 2 perc – Dráma", "page": 12}, {"title": "Panelbeszélgetés I. (11:25-11:40)", "page": 12}, {"title": "Szünet (11:40-11:55)", "page": 12}, {"title": "2. BLOKK – FORDULATOK (11:55-13:15)", "page": 13}, {"title": "Asomik (2021) 1 perc – Reklám", "page": 13}, {"title": "Phish (2016) 7,5 perc – Misztikus", "page": 13}, {"title": "Ki ez a sok művész? (2023) 25 perc – Rövidfilm", "page": 14}, {"title": "Aratás (2022) 30 perc – Rövidfilm", "page": 14}, {"title": "The Minimum Clearance Outline (2017) 8 perc – Road Movie", "page": 15}, {"title": "Kezdetben volt a tett (2016) 3,5 perc – Etűd", "page": 15}, {"title": "Panelbeszélgetés II. (13:15-13:35)", "page": 15}, {"title": "Ebédszünet (13:35-14:20)", "page": 15}, {"title": "3. BLOKK – PROJEKTEK (14:20-15:25)", "page": 16}, {"title": "Silence in Bjordall (2021) 1 perc – Trailer", "page": 16}, {"title": "Három fehér ló (2018) 4 perc – Rövidfilm", "page": 16}, {"title": "Kenopsia, Opia, Lachesism (2018) 6 perc – Etűd", "page": 17}, {"title": "Mr A, Mr K, a Pápa, Izom Tibor és az elnyomottak (2018) 5 perc – Kísérleti film", "page": 17}, {"title": "4 szoba (2025) 10 perc – Kísérleti film", "page": 17}, {"title": "Da Capo (2018) 5 perc – Etűd", "page": 18}, {"title": "Hétköznapi szuperhősök (és hogy miért utáljuk őket) (2020) 30 perc – Áldokumentumfilm", "page": 18}, {"title": "Panelbeszélgetés III. (15:25-15:45)", "page": 18}, {"title": "Szünet (15:45-16:00)", "page": 18}, {"title": "4. BLOKK – SÖTÉT OLDAL (16:00-17:10)", "page": 19}, {"title": "Greetings from Bjordall (2021) 1 perc - Trailer", "page": 19}];
   const totalPages = 21;
   let currentPage = 1;
-
   const $ = id => document.getElementById(id);
 
   function renderToc(){
@@ -86,20 +84,22 @@
   function toggleSidebar(){ $('sidebar').classList.toggle('open'); }
   function closeSidebar(){ $('sidebar').classList.remove('open'); }
 
-  // Gesture controls removed to allow pinch-zoom on mobile
-
   // Keyboard fallback
   document.addEventListener('keydown', e=>{
     if (e.key === 'ArrowRight') nextPage();
     if (e.key === 'ArrowLeft')  prevPage();
   });
 
-  // Android dynamic viewport fix
+  // Android dynamic viewport + nav height
   function setViewportHeights(){
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   }
-  window.addEventListener('resize', setViewportHeights);
+  function setNavHeight(){
+    const bar = document.getElementById('nav-bar');
+    if (bar) document.documentElement.style.setProperty('--nav-h', `${bar.offsetHeight}px`);
+  }
+  window.addEventListener('resize', ()=>{ setViewportHeights(); setNavHeight(); });
   setViewportHeights();
 
   // Wire up buttons + menu
@@ -107,7 +107,7 @@
   $('next-btn').addEventListener('click', nextPage);
   $('prev-btn').addEventListener('click', prevPage);
 
-  document.addEventListener('DOMContentLoaded', ()=>{ renderToc(); updatePage(); });
+  document.addEventListener('DOMContentLoaded', ()=>{ renderToc(); updatePage(); setNavHeight(); });
   </script>
 </body>
 </html>

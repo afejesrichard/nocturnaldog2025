@@ -1,7 +1,9 @@
+
 /* ---------- Base & theme ---------- */
 *{ box-sizing:border-box; }
 :root{
   --vh: 1vh;
+  --nav-h: 80px; /* will be updated via JS */
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-top:    env(safe-area-inset-top, 0px);
 }
@@ -45,6 +47,8 @@ body{
   border-right:1px solid #243455; overflow-y:auto;
   position:absolute; left:-250px; top:0; bottom:0; z-index:1200;
   transition:left .3s ease;
+  padding-bottom: calc(var(--nav-h) + var(--safe-bottom) + 16px); /* keep bottom items visible */
+  -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
 }
 .sidebar.open{ left:0; }
 .sidebar h2{ margin:1rem; font-size:1rem; color:#d5def0; }
@@ -75,7 +79,7 @@ body{
 }
 .page-viewer img{
   max-width:100%;
-  max-height: calc(var(--vh) * 100 - 14rem); /* header + bar */
+  max-height: calc(var(--vh) * 100 - 14rem);
   object-fit:contain;
   background:#0b1220; border:1px solid #1f2d46; border-radius:8px;
   box-shadow:0 4px 10px rgba(0,0,0,.45);
@@ -124,7 +128,7 @@ body{
   .header h1{ font-size:1.3rem; }
   .header .event-link{ font-size:.85rem; padding:.45rem .8rem; }
   .container{ flex-direction:column; height:auto; }
-  .sidebar{ width:85%; max-width:320px; left:-85%; top:0; bottom:0; }
+  .sidebar{ width:85%; max-width:320px; left:-85%; top:0; bottom:0; box-shadow: 6px 0 12px rgba(0,0,0,.35); }
   .page-viewer{ margin:.5rem .5rem 4.5rem; }
   .nav-btn{ font-size:1rem; padding:.8rem 1rem; }
 }
