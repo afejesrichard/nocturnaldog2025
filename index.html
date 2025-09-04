@@ -8,77 +8,104 @@
 </head>
 <body>
     <header class="header">
+        <button id="menu-toggle" class="menu-toggle">☰</button>
         <h1>Nocturnal Dog 2025 Booklet</h1>
         <p class="subtitle">Celebrating 10 years of the Nocturnal Dog film workshop</p>
         <a href="https://www.facebook.com/events/1089419692710203" target="_blank" class="event-link">View Facebook Event</a>
     </header>
-    <main class="booklet">
-        <section class="page">
-            <img src="images/page1.webp" alt="Page 1">
-        </section>
-        <section class="page">
-            <img src="images/page2.webp" alt="Page 2">
-        </section>
-        <section class="page">
-            <img src="images/page3.webp" alt="Page 3">
-        </section>
-        <section class="page">
-            <img src="images/page4.webp" alt="Page 4">
-        </section>
-        <section class="page">
-            <img src="images/page5.webp" alt="Page 5">
-        </section>
-        <section class="page">
-            <img src="images/page6.webp" alt="Page 6">
-        </section>
-        <section class="page">
-            <img src="images/page7.webp" alt="Page 7">
-        </section>
-        <section class="page">
-            <img src="images/page8.webp" alt="Page 8">
-        </section>
-        <section class="page">
-            <img src="images/page9.webp" alt="Page 9">
-        </section>
-        <section class="page">
-            <img src="images/page10.webp" alt="Page 10">
-        </section>
-        <section class="page">
-            <img src="images/page11.webp" alt="Page 11">
-        </section>
-        <section class="page">
-            <img src="images/page12.webp" alt="Page 12">
-        </section>
-        <section class="page">
-            <img src="images/page13.webp" alt="Page 13">
-        </section>
-        <section class="page">
-            <img src="images/page14.webp" alt="Page 14">
-        </section>
-        <section class="page">
-            <img src="images/page15.webp" alt="Page 15">
-        </section>
-        <section class="page">
-            <img src="images/page16.webp" alt="Page 16">
-        </section>
-        <section class="page">
-            <img src="images/page17.webp" alt="Page 17">
-        </section>
-        <section class="page">
-            <img src="images/page18.webp" alt="Page 18">
-        </section>
-        <section class="page">
-            <img src="images/page19.webp" alt="Page 19">
-        </section>
-        <section class="page">
-            <img src="images/page20.webp" alt="Page 20">
-        </section>
-        <section class="page">
-            <img src="images/page21.webp" alt="Page 21">
-        </section>
-    </main>
+    <div class="container">
+        <nav id="sidebar" class="sidebar">
+            <h2>Table of Contents</h2>
+            <ul id="toc-list"></ul>
+        </nav>
+        <main class="main-content">
+            <div class="page-viewer">
+                <img id="page-image" src="images/page1.webp" alt="Page 1">
+            </div>
+            <div class="nav-buttons">
+                <button id="prev-btn" class="nav-btn">&lt; Prev</button>
+                <span id="page-indicator">1 / 21</span>
+                <button id="next-btn" class="nav-btn">Next &gt;</button>
+            </div>
+        </main>
+    </div>
     <footer class="footer">
         <p>&copy; 2025 Nocturnal Dog. All rights reserved.</p>
     </footer>
+    <script>
+const tocEntries = [{"title": "1. BLOKK – IDENT (10:10-11:25)", "page": 8}, {"title": "Praedo (2021) 0,5 perc – reklám", "page": 8}, {"title": "How to Make a Remake (2018) 14 perc – Werkfilm", "page": 8}, {"title": "1435MM (2016) 20 perc – rövidfilm", "page": 9}, {"title": "Kiterítenek úgy is… (2024) 5 perc – Etűd", "page": 9}, {"title": "Morzsi (2016) 2,5 perc – Műhelyfilm", "page": 10}, {"title": "A hős útja… (2019) 1 perc – Trailer", "page": 10}, {"title": "Jó ok a távozásra (2019) 13 perc – Rövidfilm", "page": 11}, {"title": "Akherón …és mi lett a pandával? (2021) 10 perc – Kísérleti film", "page": 11}, {"title": "A varázsló halála (2016) 2 perc – Dráma", "page": 12}, {"title": "Panelbeszélgetés I. (11:25-11:40)", "page": 12}, {"title": "Szünet (11:40-11:55)", "page": 12}, {"title": "2. BLOKK – FORDULATOK (11:55-13:15)", "page": 13}, {"title": "Asomik (2021) 1 perc – Reklám", "page": 13}, {"title": "Phish (2016) 7,5 perc – Misztikus", "page": 13}, {"title": "Ki ez a sok művész? (2023) 25 perc – Rövidfilm", "page": 14}, {"title": "Aratás (2022) 30 perc – Rövidfilm", "page": 14}, {"title": "The Minimum Clearance Outline (2017) 8 perc – Road Movie", "page": 15}, {"title": "Kezdetben volt a tett (2016) 3,5 perc – Etűd", "page": 15}, {"title": "Panelbeszélgetés II. (13:15-13:35)", "page": 15}, {"title": "Ebédszünet (13:35-14:20)", "page": 15}, {"title": "3. BLOKK – PROJEKTEK (14:20-15:25)", "page": 16}, {"title": "Silence in Bjordall (2021) 1 perc – Trailer", "page": 16}, {"title": "Három fehér ló (2018) 4 perc – Rövidfilm", "page": 16}, {"title": "Kenopsia, Opia, Lachesism (2018) 6 perc – Etűd", "page": 17}, {"title": "Mr A, Mr K, a Pápa, Izom Tibor és az elnyomottak (2018) 5 perc – Kísérleti film", "page": 17}, {"title": "4 szoba (2025) 10 perc – Kísérleti film", "page": 17}, {"title": "Da Capo (2018) 5 perc – Etűd", "page": 18}, {"title": "Hétköznapi szuperhősök (és hogy miért utáljuk őket) (2020) 30 perc – Áldokumentumfilm", "page": 18}, {"title": "Panelbeszélgetés III. (15:25-15:45)", "page": 18}, {"title": "Szünet (15:45-16:00)", "page": 18}, {"title": "4. BLOKK – SÖTÉT OLDAL (16:00-17:10)", "page": 19}, {"title": "Greetings from Bjordall (2021) 1 perc - Trailer", "page": 19}];
+const totalPages = 21;
+let currentPage = 1;
+
+function renderToc() {
+    const tocList = document.getElementById('toc-list');
+    tocEntries.forEach(entry => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#';
+        a.textContent = entry.title;
+        a.dataset.page = entry.page;
+        a.onclick = function(event) {
+            event.preventDefault();
+            goToPage(parseInt(this.dataset.page));
+            closeSidebar();
+        };
+        li.appendChild(a);
+        tocList.appendChild(li);
+    });
+}
+function updatePage() {
+    const img = document.getElementById('page-image');
+    img.src = `images/page${currentPage}.webp`;
+    img.alt = `Page ${currentPage}`;
+    document.getElementById('page-indicator').textContent = `${currentPage} / ${totalPages}`;
+    highlightActiveToc();
+}
+
+function highlightActiveToc() {
+    const tocList = document.getElementById('toc-list');
+    const links = tocList.querySelectorAll('a');
+    links.forEach(link => {
+        if (parseInt(link.dataset.page) === currentPage) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+}
+function goToPage(page) {
+    if (page < 1 || page > totalPages) return;
+    currentPage = page;
+    updatePage();
+}
+function nextPage() {
+    if (currentPage < totalPages) {
+        currentPage++;
+        updatePage();
+    }
+}
+function prevPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        updatePage();
+    }
+}
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('open');
+}
+function closeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.remove('open');
+}
+document.getElementById('menu-toggle').addEventListener('click', toggleSidebar);
+document.getElementById('next-btn').addEventListener('click', nextPage);
+document.getElementById('prev-btn').addEventListener('click', prevPage);
+document.addEventListener('DOMContentLoaded', function() {
+    renderToc();
+    updatePage();
+});
+
+    </script>
 </body>
 </html>

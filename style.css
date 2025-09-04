@@ -1,37 +1,45 @@
-/* Reset some default styles */
+/* Global styles */
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
-
 body {
+    margin: 0;
     font-family: Arial, sans-serif;
-    line-height: 1.5;
     background-color: #f5f5f5;
     color: #333;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
-
 .header {
     background-color: #111;
     color: #fff;
+    padding: 1rem;
     text-align: center;
-    padding: 2rem 1rem;
+    position: relative;
 }
-
+.menu-toggle {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 .header h1 {
-    font-size: 2rem;
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+}
+.header .subtitle {
+    font-size: 0.9rem;
     margin-bottom: 0.5rem;
 }
-
-.header .subtitle {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-}
-
 .header .event-link {
     display: inline-block;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.8rem;
     background-color: #fff;
     color: #111;
     text-decoration: none;
@@ -39,34 +47,141 @@ body {
     font-weight: bold;
     transition: background-color 0.3s ease;
 }
-
 .header .event-link:hover {
     background-color: #e2e2e2;
 }
-
-.booklet {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 1rem;
+.container {
+    flex: 1;
+    display: flex;
+    height: calc(100vh - 160px);
 }
-
-.page {
-    margin-bottom: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
     background-color: #fff;
-}
-
-.page img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.footer {
-    text-align: center;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+    position: absolute;
+    left: -250px;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+    transition: left 0.3s ease;
     padding: 1rem;
+}
+.sidebar.open {
+    left: 0;
+}
+.sidebar h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar li {
+    margin-bottom: 0.5rem;
+}
+.sidebar li a {
+    color: #111;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+/* Ensure visited links don't turn purple/blue by default */
+.sidebar li a:visited {
+    color: #111;
+}
+.sidebar li a:hover {
+    text-decoration: underline;
+}
+
+/* Highlight the active TOC entry */
+.sidebar li a.active {
+    font-weight: bold;
+    color: #fff;
+    background-color: #333;
+    padding: 0.1rem 0.2rem;
+    border-radius: 4px;
+}
+
+/* Active visited link style */
+.sidebar li a.active:visited {
+    color: #fff;
+}
+/* Main content styles */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    overflow: hidden;
+}
+.page-viewer {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.page-viewer img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.nav-buttons {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.nav-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
     background-color: #111;
     color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.nav-btn:hover {
+    background-color: #333;
+}
+#page-indicator {
+    font-size: 1rem;
+}
+.footer {
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
     font-size: 0.9rem;
+}
+/* Responsive design */
+@media (min-width: 768px) {
+    /* On larger screens, keep body overflow hidden to prevent vertical scrolling; the page viewer will scale within the available height. */
+    body {
+        overflow: hidden;
+    }
+    .sidebar {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 200px;
+        border-right: 1px solid #ddd;
+    }
+    .container {
+        height: calc(100vh - 160px);
+    }
+    .menu-toggle {
+        display: none;
+    }
 }
