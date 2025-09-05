@@ -3,7 +3,7 @@
 *{ box-sizing:border-box; }
 :root{
   --vh: 1vh;
-  --nav-h: 80px; /* will be updated via JS */
+  --nav-h: 80px; /* updated via JS */
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-top:    env(safe-area-inset-top, 0px);
 }
@@ -13,7 +13,7 @@ body{
   background:#0e1726;
   color:#e5e8f0;
   min-height: calc(var(--vh) * 100);
-  overflow:hidden;
+  overflow:hidden;               /* MOBILE default: lock page scroll */
   display:flex; flex-direction:column;
 }
 
@@ -40,22 +40,20 @@ body{
 }
 .header .event-link:hover{ background:#36579a; }
 
-/* ---------- Layout ---------- */
-.container{ flex:1; display:flex; height: calc(100vh - 160px); }
+/* ---------- Layout (MOBILE defaults) ---------- */
+.container{ flex:1; display:flex; height: auto; min-height: 0; }
 .sidebar{
-  width:250px; background:#0f1a32; color:#e5e8f0;
-  border-right:1px solid #243455; overflow-y:auto;
-  position:absolute; left:-250px; top:0; bottom:0; z-index:1200;
+  width:85%; max-width:320px;
+  background:#0f1a32; color:#e5e8f0;
+  border-right:1px solid #243455;
+  overflow-y:auto;
+  position:absolute; left:-85%; top:0; bottom:0; z-index:1200;
   transition:left .3s ease;
-  padding-bottom: calc(var(--nav-h) + var(--safe-bottom) + 16px); /* keep bottom items visible */
+  padding-bottom: calc(var(--nav-h) + var(--safe-bottom) + 16px);
   -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+  box-shadow:6px 0 12px rgba(0,0,0,.35);
 }
 .sidebar.open{ left:0; }
-.sidebar::after{ /* subtle bottom fade to hint more content */ 
-  content:""; position:sticky; bottom:0; left:0; right:0; height:28px;
-  background: linear-gradient(to bottom, rgba(15,26,50,0), rgba(15,26,50,1));
-  pointer-events:none;
-}
 .sidebar h2{ margin:1rem; font-size:1rem; color:#d5def0; }
 .sidebar ul{ list-style:none; padding:0 1rem 1rem; margin:0; }
 .sidebar li{ margin:.25rem 0; }
@@ -79,7 +77,7 @@ body{
   display:flex; align-items:center; justify-content:center;
   overflow:hidden;
   background:#0e1726; border:1px solid #374d87; border-radius:10px;
-  margin:.75rem auto 4.5rem;
+  margin:.5rem .5rem 4.8rem; /* space for mobile bottom bar */
   touch-action: pinch-zoom;
 }
 .page-viewer img{
@@ -122,18 +120,22 @@ body{
   text-align:center; padding:1rem; font-size:.9rem;
 }
 
-/* ---------- Responsive ---------- */
-@media (min-width: 768px){
-  body{ overflow:hidden; }
-  .sidebar{ position:relative; left:0; width:220px; }
+/* ---------- DESKTOP overrides (ONLY here) ---------- */
+@media (min-width: 901px){
+  body{ overflow:auto; min-height:100vh; } /* allow page scroll on desktop */
   .container{ height: calc(100vh - 160px); }
-  .menu-toggle{ display:none; }
+  .sidebar{
+    width:260px; position:relative; left:0; box-shadow:none;
+    height: calc(100dvh - 160px); /* explicit height so TOC scrolls */
+  }
+  .main-content{ padding: 0 clamp(1rem, 3vw, 2rem); }
+  .page-viewer{ margin:.75rem auto 4.5rem; }
+  .page-viewer img{
+    max-height: calc(100dvh - 14rem); /* desktop viewport */
+  }
 }
-@media (max-width: 600px){
-  .header h1{ font-size:1.3rem; }
-  .header .event-link{ font-size:.85rem; padding:.45rem .8rem; }
-  .container{ flex-direction:column; height:auto; }
-  .sidebar{ width:85%; max-width:320px; left:-85%; top:0; bottom:0; box-shadow: 6px 0 12px rgba(0,0,0,.35); }
-  .page-viewer{ margin:.5rem .5rem 4.8rem; }
-  .nav-btn{ font-size:1rem; padding:.8rem 1rem; }
+
+/* Extra: hide hamburger on desktop */
+@media (min-width: 901px){
+  .menu-toggle{ display:none; }
 }

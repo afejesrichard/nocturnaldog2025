@@ -90,7 +90,7 @@
     if (e.key === 'ArrowLeft')  prevPage();
   });
 
-  // Android dynamic viewport + nav height
+  // Dynamic viewport + nav height (mobile), desktop rules are in CSS only
   function setViewportHeights(){
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
